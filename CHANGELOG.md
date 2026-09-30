@@ -7,11 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.4] - 2026-09-30
+
 ### Changed
 - Homebrew installs now use the `cachebag/zerobrew` tap, which is updated automatically for every release. The old `lucasgelfond/zerobrew` tap was stuck at v0.1.1 ([#386](https://github.com/lucasgelfond/zerobrew/issues/386))
-- On Intel Macs, bottles pinned to `/usr/local` are built from source instead of being installed with paths that can't be rewritten for `/opt/zerobrew`, matching Homebrew ([#286](https://github.com/lucasgelfond/zerobrew/issues/286))
+- On Intel Macs, bottles pinned to `/usr/local` (including tap bottles) are built from source instead of being installed with paths that can't be rewritten for `/opt/zerobrew`, matching Homebrew ([#286](https://github.com/lucasgelfond/zerobrew/issues/286))
+- Re-measure the README and site benchmarks with both tools starting from the same state, and record versions, hardware and bandwidth ([#394](https://github.com/lucasgelfond/zerobrew/issues/394))
 
 ### Fixed
+- Don't overwrite a shell config that `zb init` can't read, such as one with non-UTF-8 bytes ([#400](https://github.com/lucasgelfond/zerobrew/pull/400))
 - Install the default config files bottles ship in `etc` and `var` (such as `php.ini` and `openssl.cnf`) into the prefix, keeping any edits and writing new defaults alongside as `<name>.default` ([#390](https://github.com/lucasgelfond/zerobrew/issues/390))
 - Replace Homebrew placeholders in scripts that contain binary data and recompute PHP archive signatures afterwards, which broke `composer` on macOS ([#389](https://github.com/lucasgelfond/zerobrew/issues/389))
 - Only rewrite the Homebrew prefix a bottle was built with, so `/usr/local` paths on Apple Silicon are no longer rewritten or reported as unrelocatable ([#286](https://github.com/lucasgelfond/zerobrew/issues/286))
@@ -146,7 +150,8 @@ To get an idea of the initial features zerobrew supports, take a look at the [RE
 
 See the [full commit history](https://github.com/lucasgelfond/zerobrew/commits/v0.1.1) for more details.
 
-[Unreleased]: https://github.com/lucasgelfond/zerobrew/compare/v0.3.3...HEAD
+[Unreleased]: https://github.com/lucasgelfond/zerobrew/compare/v0.3.4...HEAD
+[0.3.4]: https://github.com/lucasgelfond/zerobrew/compare/v0.3.3...v0.3.4
 [0.3.3]: https://github.com/lucasgelfond/zerobrew/compare/v0.3.2...v0.3.3
 [0.3.2]: https://github.com/lucasgelfond/zerobrew/compare/v0.3.1...v0.3.2
 [0.3.1]: https://github.com/lucasgelfond/zerobrew/compare/v0.3.0...v0.3.1
